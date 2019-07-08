@@ -1,0 +1,22 @@
+#wrapper {
+    height:100%;
+    width:100%;
+    display: flex;
+    background-color:#9ACD32;
+}
+#left {
+    background-color:#FFEDF7;
+    height: 100%;
+    flex:128;
+}
+#right {
+    background-color:#003164;
+    height: 100%;
+    flex:45;
+}
+
+html, body{
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
