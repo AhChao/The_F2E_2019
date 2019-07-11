@@ -1,6 +1,6 @@
 #wrapper {
-    height:100%;
-    width:100%;
+    height:1080px; /*100%*/
+    width:1920px; /*100%*/
     display: flex;
     background-color:#F7F5F1;
 }
@@ -10,6 +10,11 @@
   src: url('./fonts/AvenirNextLTPro-Regular.otf');
 }
 
+@font-face {
+  font-family: AvenirNextBold;
+  src: url('./fonts/AvenirNextLTPro-Bold.otf');
+}
+
 html, body{
     height:100%;
     margin: 0;
@@ -17,23 +22,53 @@ html, body{
     font-family: AvenirNext;
 }
 
+.blueboldBigText{
+    color: #003CA1;
+    font-size: 35px;
+    font-family: AvenirNextBold;
+}
+
 .blueBigText{
     color: #003CA1;
     font-size: 35px;
+}
+
+.use-flexbox{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+.sidebarItem{
+  font-size: 40px;
+  color: #F5F1EE;
+}
+
+.sidebarItem:focus {
+  font-size: 40px;
+  color: #003CA1;
+}
+
+.mainArea div{
+  display: inline-block;
 }
 
 /*Sidebar start*/
 /* The sidebar menu */
 .sidenav {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 7.3%; /* Set the width of the sidebar */
+  width: 140px;/*7.3%; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  right: 0;
+  top: 0px; /* Stay at the top */
+  right: 0px;
   background-color: #2A56A5; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 20px;
+  
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 /* The navigation menu links */
