@@ -1,10 +1,11 @@
 var nowShowingMenu = "None";
 var taskData = 
 {
-	"First task today":
+	"First task todayyy":
 	{
 	 "status":"Not Start",//Not Start - Doing - Done - Cancel
 	 "timeTaken":"",
+	 "dateOfDone":"",
 	 "taskContent":["Lorem ipsum dolor sit amet",
 	"Consectetur adipiscing elit",
 	"Nulla vulputate neque",
@@ -42,8 +43,25 @@ function viewTaskData(taskData)
 
 function addTask(taskTitle)
 {
-	taskData[taskTitle] = [];
+	taskData[taskTitle] = {
+		"status":"Not Start",
+		"timeTaken":"",
+		"dateOfDone":"",
+		"taskContent":"Write Some Desc Here.",
+	}	;
 	viewTaskData(taskData);
+}
+
+function updateTaskShowInMainPage(taskName)
+{
+	d3.select("#viewTaskTitle").text(taskName);
+	d3.select("#viewTaskContent").text(taskData[taskName]["taskContent"]);
+	var nodeOfContent = document.getElementById('viewTaskContent');
+	
+	var actualHeight= $("#viewTaskContent").actual("height");
+	nodeOfContent.setAttribute('style', 'height:' + actualHeight + 'px;overflow-y:hidden;');
+	//nodeOfContent.style.height = 'auto';
+	//nodeOfContent.style.height = (nodeOfContent.scrollHeight) + 'px';
 }
 
 function showAnalyticsMenu()
@@ -64,7 +82,7 @@ function showSideBar(clickMenu)
 		d3.select("#analyticsMenuPanel").attr("style","display:none;");
 		d3.select("#musicMenuPanel").attr("style","display:none;");
 		d3.select("#sidebar").attr("style",null);
-		d3.select("#taskArea").attr("style",null);
+		d3.select("#taskArea").attr("style","display: inline-block;vertical-align: top;margin-top: 33%;width: 25%;height: 100%;text-align: center;");
 		nowShowingMenu = "none";
 		return false;
 	}

@@ -5,11 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="./style.css">
 	<script src="./js/d3.v5.min.js"></script>
 	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./js/jquery.actual.min.js"></script>
+	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
 
 	<script src="./js/taskBar.js"></script>
 	<script src="./js/fileLoader.js"></script>
 	<script src="./js/customertimer.js"></script>
-	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+	<script src="./js/main.js"></script>
 	<!--Source of this project
 	Icon https://ionicons.com/ 
 	Font Avenir Next 
@@ -19,7 +21,7 @@
 	UI:https://xd.adobe.com/spec/f1f538d5-24c4-4ea5-69c8-b160aad4e670-87c4/
 	-->
 </head>
-<body style="background-color:#F7F5F1; width: 100%; height:100%;">
+<body style="background-color:#F7F5F1; width: 100%; height:100%;" onload="init();">
 		<div style="width:64.7%;display: inline; height: 100%;">
 			<div name="top_info"style="margin-top: 4.5%; margin-left: 4%; height: 8.9%">
 				<div style="display: inline;">
@@ -59,7 +61,7 @@
 					<div class="use-flexbox" style="text-align: center;margin-top:71.79px;">
 						<ion-icon onclick="CancelTask()" name="close-circle-outline" style="font-size: 45px; color: #003CA1;padding-right: 40.5px" ></ion-icon>
 						<button id="StartBtn" onclick="initWorkTime()" style="width: 260px; height: 69px; border: 2px solid #003CA1;  background-color: #F5F1EE; border-radius: 5px; "><text id="StartBtnText" class="blueBigText" style="font-size: 40px;">Start</text></button>
-						<ion-icon name="refresh" style="font-size: 45px; color: #003CA1;padding-left: 40.5px"></ion-icon>
+						<ion-icon name="refresh" onclick="workDone();" style="font-size: 45px; color: #003CA1;padding-left: 40.5px"></ion-icon>
 					</div>
 				</div>
 				<div name="circles" style="margin-top: 17%;display: inline-block;vertical-align: top;width: 5%;">
@@ -117,10 +119,13 @@
 	             	addTask($('#taskAddInput').val());
 	            }
        	   });
+		//auto fit content length
 		$('textarea').on('input', function () {
 		  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
 		  this.style.height = 'auto';
 		  this.style.height = (this.scrollHeight) + 'px';
+		  var taskName = d3.select("#viewTaskTitle").text();
+		  taskData[taskName]["TaskContent"] = d3.select("#viewTaskContent").text();
 		});
 
 		function toggleContent()
