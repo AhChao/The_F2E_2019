@@ -5,14 +5,16 @@ $.getJSON("./data/taskData.json", function(json) {
 });
 }
 /*<input type="button" id="export" value="导出"/>*/
-function exportToData(){
-    var content = "这是直接使用HTML5进行导出的";
-    var blob = new Blob([content], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "./data/taskData.json");//saveAs(blob,filename)
+function exportToData(taskData){
+	var jsonToStr = JSON.stringify(taskData);
+    console.log(taskData,jsonToStr);
+    //download(taskData,'./data/taskData.json','json');
 }
 
-function exportToData2()
-{
-    var obj = { a : 1, b : 2};
-    localStorage.setItem('myObj', JSON.stringify(obj));
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
 }
