@@ -13,6 +13,12 @@ function StartTimer()
 function GetNextJob()
 {
 	var goingToDo = "No work";
+	for(var taskName in taskData)
+	{
+		if(taskData[taskName]["status"] == "Doing")
+		{
+			return taskName;
+		}
 		if(taskData[taskName]["status"] == "Not Start")
 		{
 			goingToDo = taskName;
