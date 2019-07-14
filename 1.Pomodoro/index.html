@@ -4,7 +4,10 @@
 	<title>Pomodora</title>
 	<link rel="stylesheet" type="text/css" href="./style.css">
 	<script src="./js/d3.v5.min.js"></script>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+
 	<script src="./js/taskBar.js"></script>
+	<script src="./js/fileLoader.js"></script>
 	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
 </head>
 <body>
@@ -56,11 +59,24 @@
 		</div>
 
 		<div id="taskMenuPanel" style="display: none;">
+			<input type="text" class="taskAddInput" placeholder="Add a new task..."/>
+			<div id="tasksListArea">
+				<h1>Today</h1>
+				<hr>
+				<div id="nowTaskList">
+					
+				</div>
+				<h1>Upcoming</h1>
+				<hr>
+			</div>
 		</div>
 		<div id="analyticsMenuPanel" style="display: none;">
 		</div>
 		<div id="musicMenuPanel" style="display: none;">
 		</div>
 	</div>
+	<script type="text/javascript">//for test
+
+	</script>>
 </body>
 </html>

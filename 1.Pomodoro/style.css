@@ -44,7 +44,7 @@ html, body{
   color: #F5F1EE;
 }
 
-.sidebarItem:focus {
+.sidebarItem::focus {
   font-size: 40px;
   color: #003CA1;
 }
@@ -53,6 +53,48 @@ html, body{
   display: inline-block;
 }
 
+.taskAddInput{
+  width: 468px;
+  font-size: 35px;
+  color: #003CA1;
+  padding-left: 25px;
+}
+
+.taskAddInput::placeholder{
+  font-size: 35px;
+  color: #003CA1;
+}
+
+#tasksListArea{
+  padding-left: 63px;
+}
+
+#tasksListArea h1{
+  font-size: 40px;
+  color: #003CA1;
+}
+
+#tasksListArea hr{
+  border: solid #003CA1;
+}
+
+#nowTaskList div
+{
+  margin-top: 32.25px;
+}
+
+#nowTaskList ion-icon{
+  font-size: 30.75px;
+  color: #003CA1;
+}
+
+#nowTaskList .taskTitle
+{
+  font-size: 35px;
+  color: #003CA1;
+}
+
+/*=================================*/
 /*Sidebar start*/
 /* The sidebar menu */
 .sidenav {
