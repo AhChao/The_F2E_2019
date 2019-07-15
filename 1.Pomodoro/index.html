@@ -9,6 +9,7 @@
 	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
 
 	<script src="./js/taskBar.js"></script>
+	<script src="./js/musicBar.js"></script>
 	<script src="./js/fileLoader.js"></script>
 	<script src="./js/customertimer.js"></script>
 	<script src="./js/main.js"></script>
@@ -93,7 +94,7 @@
 	  <ion-icon class="sidebarItem" name="musical-notes" onclick="showMusicMenu()"></ion-icon><br>
 	</div>
 
-	<div style="width: 28%; display: inline;">
+	<div style="width: 28%; height: 100%; display: inline;">
 		<div id="taskMenuPanel" style="display: none;">
 			<input id="taskAddInput" type="text" class="taskAddInput" placeholder="Add a new task..."/>
 			<div id="tasksListArea">
@@ -109,6 +110,31 @@
 		<div id="analyticsMenuPanel" style="display: none;">
 		</div>
 		<div id="musicMenuPanel" style="display: none;">
+			<h1 style="font-size: 35px; color: #F0ECE9; text-align: center;">Sounds</h1>
+			<div name="whiteNoiseDiv">
+				<h1>White Noise</h1>
+				<h2 id="wnNone" onclick="stopWhiteNoise()">None<ion-icon id="wnNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
+				<h2 id="wnAirConditionerHum" onclick="playWhiteNoise($(this).text())">Air Conditioner Hum</h2><hr>
+				<h2 id="wnAutumnWinds" onclick="playWhiteNoise($(this).text())">Autumn Winds</h2><hr>
+				<h2 id="wnHealingStorm" onclick="playWhiteNoise($(this).text())">Healing Storm</h2><hr>
+				<h2 id="wnRainontheRiver" onclick="playWhiteNoise($(this).text())">Rain on the River</h2><hr>
+				<h2 id="wnSleepyBeachWaves" onclick="playWhiteNoise($(this).text())">Sleepy Beach Waves</h2><hr>
+			</div>
+			<audio id="whiteNoiseMusic" loop>
+			    <source = src="./mp3/None.mp3" type="audio/mp3">    
+			</audio>
+			<div name="Alarm">
+				<h1>Alarm</h1>
+				<h2 id="alNone" onclick="setAlarm($(this).text())">None<ion-icon id="alNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
+				<h2 id="alBell Sound Effect Ding" onclick="setAlarm($(this).text())">Bell Sound Effect Ding</h2><hr>
+				<h2 id="alCuckoo Bird Sound" onclick="setAlarm($(this).text())">Cuckoo Bird Sound</h2><hr>
+				<h2 id="alDingDingDing" onclick="setAlarm($(this).text())">Ding Ding Ding</h2><hr>
+				<h2 id="alDingSFX" onclick="setAlarm($(this).text())">Ding SFX</h2><hr>
+				<h2 id="alNoahBellsMelody" onclick="setAlarm($(this).text())">Noah Bells Melody</h2><hr>
+			</div>
+			<audio id="alarmMusic">
+			    <source = src="./mp3/None.mp3" type="audio/mp3">    
+			</audio>
 		</div>
 	</div>
 	<script type="text/javascript">//for test
@@ -130,7 +156,6 @@
 
 		function toggleContent()
 		{
-			console.log(document.getElementById('viewTaskContentDiv').style.display);
 			if(document.getElementById('viewTaskContentDiv').style.display=="")
 			{
 				document.getElementById('viewTaskContentDiv').style.display = "none";

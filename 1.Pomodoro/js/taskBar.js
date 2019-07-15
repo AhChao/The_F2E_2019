@@ -50,6 +50,8 @@ function addTask(taskTitle)
 		"taskContent":"Write Some Desc Here.",
 	}	;
 	viewTaskData(taskData);
+	var taskname = GetNextJob();
+	updateTaskShowInMainPage(taskName);
 }
 
 function updateTaskShowInMainPage(taskName)
@@ -88,7 +90,7 @@ function showSideBar(clickMenu)
 	}
 	else //點了不同的行
 	{
-		if(nowShowingMenu !="none") d3.select("#"+clickMenu).attr("style","display:none");
+		if(nowShowingMenu !="none") d3.select("#"+nowShowingMenu).attr("style","display:none");
 		if(clickMenu == "taskMenuPanel")
 			d3.select("#"+clickMenu).attr("style","width:28%;height:100%;background-color:#F5F1EE;");
 		if(clickMenu == "analyticsMenuPanel")
