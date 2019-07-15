@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="./style.css">
 	<script src="./js/d3.v5.min.js"></script>
 	<script src="./js/jquery-3.4.1.min.js"></script>
-	<script src="./js/jquery.actual.min.js"></script>
 	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
 
 	<script src="./js/taskBar.js"></script>
@@ -23,7 +22,8 @@
 	-->
 </head>
 <body style="background-color:#F7F5F1; width: 100%; height:100%;" onload="init();">
-		<div style="width:64.7%;display: inline; height: 100%;">
+	<div style="display: flex; flex-direction: row;">
+		<div style="display: inline; flex-basis: 64.7;order:1;">
 			<div name="top_info"style="margin-top: 4.5%; margin-left: 4%; height: 8.9%">
 				<div style="display: inline;">
 					<text class="blueboldBigText" style="font-weight: bold;">Pomodoro</text>
@@ -33,8 +33,8 @@
 				</div>
 			</div>
 
-			<div class="mainArea" style="height: 91.1%;width: 100%;">
-				<div name="clockArea" style="margin-left: 15%; margin-top:113px;display: inline-block;vertical-align: top;width: 70%; height: 100%">
+			<div class="mainArea" style="height: 91.1%;width: 100%; display: flex;flex-direction: row;align-items: flex-start;">
+				<div name="clockArea" style="margin-left: 15%; margin-top:113px;vertical-align: top;flex-basis: 5;">
 					<svg xmlns="http://www.w3.org/2000/svg" width="610" height="610">
 						<!--<path d="M300.88,0 a1,1 0 0,0 300.88,603.21 Z" stroke="#003CA1" stroke-width="3" fill="#F5F1EE" />-->
 						<circle cx="303.88" cy="303.88" r="234.16px" stroke="#003CA1" stroke-width="3" fill="#003CA1"/>
@@ -65,7 +65,7 @@
 						<ion-icon name="refresh" onclick="workDone();" style="font-size: 45px; color: #003CA1;padding-left: 40.5px"></ion-icon>
 					</div>
 				</div>
-				<div name="circles" style="margin-top: 17%;display: inline-block;vertical-align: top;width: 5%;">
+				<div name="circles" style="margin-top: 13%;vertical-align: top;flex-basis: 1;">
 					<svg xmlns="http://www.w3.org/2000/svg" width="60" height="500">
 						<circle id="circle1" cx="30" cy="29" r="27.835px" stroke="#003CA1" stroke-width="3" fill="#FFFFFF" />
 						<circle id="circle2" cx="30" cy="130.45" r="27.835px" stroke="#003CA1" stroke-width="3" fill="#FFFFFF" />
@@ -74,67 +74,68 @@
 						<circle id="circle5" cx="30" cy="434.8" r="27.835px" stroke="#003CA1" stroke-width="3" fill="#FFFFFF" />
 					</svg>
 				</div>
-				<div id="taskArea" name="tasks" style="display: inline-block;vertical-align: top;margin-top: 33%;width: 25%;height: 100%;text-align: center;">
-					<div ><!--TaskTitle-->
-						<text id="viewTaskTitle" onclick="toggleContent()" style="cursor: pointer;">First Task Today</text>
-						<ion-icon id="iconBesideTaskTitle" name="arrow-dropright-circle" onclick="toggleContent()" style="cursor: pointer;"></ion-icon>
-						<!--<ion-icon name="arrow-dropdown-circle"></ion-icon>-->
-					</div>
-					<div id="viewTaskContentDiv" style="background: #FFFFFF; width:100%;height:auto; text-align: center;display: none;"><!--TaskContent-->
-						<textarea id="viewTaskContent">Some Content About the Task.</textarea>
-					</div>
-					
+				<div id="taskArea" name="tasks" style="vertical-align: top;margin-top: 20%;flex-basis:5;display: flex; align-items: center; margin-left: 100px;flex-grow: 5; ">
+					<div style="display: flex; flex-direction: column;align-items:center;">
+						<div><!--TaskTitle-->
+							<text id="viewTaskTitle" onclick="toggleContent()" style="cursor: pointer;">First Task Today</text>
+							<ion-icon id="iconBesideTaskTitle" name="arrow-dropright-circle" onclick="toggleContent()" style="cursor: pointer;"></ion-icon>
+						</div>
+						<div id="viewTaskContentDiv" style="background: #FFFFFF; width: 80%;height:auto; text-align: center;display: none;margin-top: 30px;"><!--TaskContent-->
+							<textarea id="viewTaskContent">Some Content About the Task.</textarea>
+						</div>
+					</div>					
 				</div>
+			</div>
 		</div>
-	</div>
 
-	<div id="sidebar" class="sidenav" style="">
-	  <ion-icon class="sidebarItem" name="list-box" onclick="showTaskMenu()" style="margin-top:51px;"></ion-icon><br>
-	  <ion-icon class="sidebarItem" name="analytics" onclick="showAnalyticsMenu()"></ion-icon><br>
-	  <ion-icon class="sidebarItem" name="musical-notes" onclick="showMusicMenu()"></ion-icon><br>
-	</div>
+		<div id="sidebar" class="sidenav" style="">
+		  <ion-icon class="sidebarItem" name="list-box" onclick="showTaskMenu()" style="margin-top:51px;"></ion-icon><br>
+		  <ion-icon class="sidebarItem" name="analytics" onclick="showAnalyticsMenu()"></ion-icon><br>
+		  <ion-icon class="sidebarItem" name="musical-notes" onclick="showMusicMenu()"></ion-icon><br>
+		</div>
 
-	<div style="width: 28%; height: 100%; display: inline;">
-		<div id="taskMenuPanel" style="display: none;">
-			<input id="taskAddInput" type="text" class="taskAddInput" placeholder="Add a new task..."/>
-			<div id="tasksListArea">
-				<h1>Today</h1>
-				<hr>
-				<div id="nowTaskList">
-					
+		<div style="flex-basis: 28; display: flex; order:2; position: fixed; right: 0;">
+			<div id="taskMenuPanel" style="display: none;">
+				<input id="taskAddInput" type="text" class="taskAddInput" placeholder="Add a new task..."/>
+				<div id="tasksListArea">
+					<h1>Today</h1>
+					<hr>
+					<div id="nowTaskList">
+						
+					</div>
+					<h1>Upcoming</h1>
+					<hr>
 				</div>
-				<h1>Upcoming</h1>
-				<hr>
 			</div>
-		</div>
-		<div id="analyticsMenuPanel" style="display: none;">
-		</div>
-		<div id="musicMenuPanel" style="display: none;">
-			<h1 style="font-size: 35px; color: #F0ECE9; text-align: center;">Sounds</h1>
-			<div name="whiteNoiseDiv">
-				<h1>White Noise</h1>
-				<h2 id="wnNone" onclick="stopWhiteNoise()">None<ion-icon id="wnNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
-				<h2 id="wnAirConditionerHum" onclick="playWhiteNoise($(this).text())">Air Conditioner Hum</h2><hr>
-				<h2 id="wnAutumnWinds" onclick="playWhiteNoise($(this).text())">Autumn Winds</h2><hr>
-				<h2 id="wnHealingStorm" onclick="playWhiteNoise($(this).text())">Healing Storm</h2><hr>
-				<h2 id="wnRainontheRiver" onclick="playWhiteNoise($(this).text())">Rain on the River</h2><hr>
-				<h2 id="wnSleepyBeachWaves" onclick="playWhiteNoise($(this).text())">Sleepy Beach Waves</h2><hr>
+			<div id="analyticsMenuPanel" style="display: none;">
 			</div>
-			<audio id="whiteNoiseMusic" loop>
-			    <source = src="./mp3/None.mp3" type="audio/mp3">    
-			</audio>
-			<div name="Alarm">
-				<h1>Alarm</h1>
-				<h2 id="alNone" onclick="setAlarm($(this).text())">None<ion-icon id="alNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
-				<h2 id="alBell Sound Effect Ding" onclick="setAlarm($(this).text())">Bell Sound Effect Ding</h2><hr>
-				<h2 id="alCuckoo Bird Sound" onclick="setAlarm($(this).text())">Cuckoo Bird Sound</h2><hr>
-				<h2 id="alDingDingDing" onclick="setAlarm($(this).text())">Ding Ding Ding</h2><hr>
-				<h2 id="alDingSFX" onclick="setAlarm($(this).text())">Ding SFX</h2><hr>
-				<h2 id="alNoahBellsMelody" onclick="setAlarm($(this).text())">Noah Bells Melody</h2><hr>
+			<div id="musicMenuPanel" style="display: none;">
+				<h1 style="font-size: 35px; color: #F0ECE9; text-align: center;">Sounds</h1>
+				<div name="whiteNoiseDiv">
+					<h1>White Noise</h1>
+					<h2 id="wnNone" onclick="stopWhiteNoise()">None<ion-icon id="wnNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
+					<h2 id="wnAirConditionerHum" onclick="playWhiteNoise($(this).text())">Air Conditioner Hum</h2><hr>
+					<h2 id="wnAutumnWinds" onclick="playWhiteNoise($(this).text())">Autumn Winds</h2><hr>
+					<h2 id="wnHealingStorm" onclick="playWhiteNoise($(this).text())">Healing Storm</h2><hr>
+					<h2 id="wnRainontheRiver" onclick="playWhiteNoise($(this).text())">Rain on the River</h2><hr>
+					<h2 id="wnSleepyBeachWaves" onclick="playWhiteNoise($(this).text())">Sleepy Beach Waves</h2><hr>
+				</div>
+				<audio id="whiteNoiseMusic" loop>
+				    <source = src="./mp3/None.mp3" type="audio/mp3">    
+				</audio>
+				<div name="Alarm">
+					<h1>Alarm</h1>
+					<h2 id="alNone" onclick="setAlarm($(this).text())">None<ion-icon id="alNowCheck" name="checkmark" style="float: right;"></ion-icon></h2><hr>
+					<h2 id="alBell Sound Effect Ding" onclick="setAlarm($(this).text())">Bell Sound Effect Ding</h2><hr>
+					<h2 id="alCuckoo Bird Sound" onclick="setAlarm($(this).text())">Cuckoo Bird Sound</h2><hr>
+					<h2 id="alDingDingDing" onclick="setAlarm($(this).text())">Ding Ding Ding</h2><hr>
+					<h2 id="alDingSFX" onclick="setAlarm($(this).text())">Ding SFX</h2><hr>
+					<h2 id="alNoahBellsMelody" onclick="setAlarm($(this).text())">Noah Bells Melody</h2><hr>
+				</div>
+				<audio id="alarmMusic">
+				    <source = src="./mp3/None.mp3" type="audio/mp3">    
+				</audio>
 			</div>
-			<audio id="alarmMusic">
-			    <source = src="./mp3/None.mp3" type="audio/mp3">    
-			</audio>
 		</div>
 	</div>
 	<script type="text/javascript">//for test

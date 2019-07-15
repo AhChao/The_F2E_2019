@@ -58,12 +58,9 @@ function updateTaskShowInMainPage(taskName)
 {
 	d3.select("#viewTaskTitle").text(taskName);
 	d3.select("#viewTaskContent").text(taskData[taskName]["taskContent"]);
-	var nodeOfContent = document.getElementById('viewTaskContent');
-	
-	var actualHeight= $("#viewTaskContent").actual("height");
-	nodeOfContent.setAttribute('style', 'height:' + actualHeight + 'px;overflow-y:hidden;');
-	//nodeOfContent.style.height = 'auto';
-	//nodeOfContent.style.height = (nodeOfContent.scrollHeight) + 'px';
+	document.getElementById('viewTaskContentDiv').style.display = "";
+	$('#viewTaskContent').trigger('input');
+	document.getElementById('viewTaskContentDiv').style.display = "none";
 }
 
 function showAnalyticsMenu()
@@ -84,7 +81,7 @@ function showSideBar(clickMenu)
 		d3.select("#analyticsMenuPanel").attr("style","display:none;");
 		d3.select("#musicMenuPanel").attr("style","display:none;");
 		d3.select("#sidebar").attr("style",null);
-		d3.select("#taskArea").attr("style","display: inline-block;vertical-align: top;margin-top: 33%;width: 25%;height: 100%;text-align: center;");
+		d3.select("#taskArea").attr("style","vertical-align: top;margin-top: 20%;flex-basis:5;display: flex; align-items: center; margin-left: 100px;flex-grow: 5;");
 		nowShowingMenu = "none";
 		return false;
 	}
@@ -92,13 +89,13 @@ function showSideBar(clickMenu)
 	{
 		if(nowShowingMenu !="none") d3.select("#"+nowShowingMenu).attr("style","display:none");
 		if(clickMenu == "taskMenuPanel")
-			d3.select("#"+clickMenu).attr("style","width:28%;height:100%;background-color:#F5F1EE;");
+			d3.select("#"+clickMenu).attr("style","background-color:#F5F1EE;");
 		if(clickMenu == "analyticsMenuPanel")
-			d3.select("#"+clickMenu).attr("style","width:28%;height:100%;background: -webkit-linear-gradient(#5980C3,#3E68B2,#2A56A5);");
+			d3.select("#"+clickMenu).attr("style","background: -webkit-linear-gradient(#5980C3,#3E68B2,#2A56A5);");
 		if(clickMenu == "musicMenuPanel")
-			d3.select("#"+clickMenu).attr("style","width:28%;height:100%;background-color:#5980C3;");
+			d3.select("#"+clickMenu).attr("style","background-color:#5980C3;");
 		d3.select("#sidebar").attr("style","right:28%;");
-		d3.select("#taskArea").attr("style","display:none;");
+		d3.select("#taskArea").attr("style","visibility:hidden;");
 		nowShowingMenu = clickMenu;
 		return true;		
 	}

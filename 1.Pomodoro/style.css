@@ -106,8 +106,12 @@ html, body{
 }
 #viewTaskContent
 {
+  width: 100%;
   font-size: 30px;
   color: #003CA1;
+  border: none;
+  border-radius: 3px;
+  box-shadow:3px 3px 5px 6px #AAAAAA;
 }
 
 /*=================================*/
