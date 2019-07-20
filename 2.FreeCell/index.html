@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>FreeCell</title>
+	<meta charset="UTF-8">
+	<!--<link rel="stylesheet" type="text/css" href="./style.css">-->
+	<script src="./js/d3.v5.min.js"></script>
+	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/main.js"></script>
 </head>
-<body>
+<body onload="init();">
 	<text>FreeCell1:<text></text></text><br>
 	<text>FreeCell2:<text></text></text><br>
 	<text>FreeCell3:<text></text></text><br>
@@ -13,5 +17,16 @@
 	<text>Row2:<text></text></text><br>
 	<text>Row3:<text></text></text><br>
 	<text>Row4:<text></text></text><br>
+	<br><br>
+	<text>Init Column:<text id="initColumn1"></text></text><br>
+	<text>Init Column:<text id="initColumn2"></text></text><br>
+	<text>Init Column:<text id="initColumn3"></text></text><br>
+	<text>Init Column:<text id="initColumn4"></text></text><br>
+	<text>Init Column:<text id="initColumn5"></text></text><br>
+	<text>Init Column:<text id="initColumn6"></text></text><br>
+	<text>Init Column:<text id="initColumn7"></text></text><br>
+	<text>Init Column:<text id="initColumn8"></text></text><br>
+	<div id="garbage"></div>
+
 </body>
 </html>
